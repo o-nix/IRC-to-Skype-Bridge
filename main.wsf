@@ -1,0 +1,24 @@
+<job>
+	<?job error="true" debug="true"?>
+	
+	<script language="jscript" src="array.js" />
+	<script language="jscript" src="text.js" />
+	<script language="jscript" src="console.js" />
+	<script language="jscript" src="messages.js" />
+	<script language="jscript" src="errors.js" />
+	<script language="jscript" src="bot.js" />
+	<script language="jscript" src="console.commands.js" />
+	
+	<script language="jscript">
+		var bot = new SkypeBot();
+		
+		var dbg = {
+			echo: function(text) {
+				WSH.Echo(text);
+			}
+		}
+		
+		while (true)
+			bot.messagesReactor.processNext();
+	</script>
+</job>
