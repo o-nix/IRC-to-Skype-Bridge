@@ -1,29 +1,21 @@
-function SkypeBot() {
-	var _consoleCommands = new EssentialConsoleCommands(this);
+function SkypeBot(global) {
+	var bot = this;
 	
-	this.console = new BotConsole(function(line) {
-		if (_consoleCommands[line]) {
-			_consoleCommands[line]();
-			
-			return;
-		}
-		
-		try {
-			var result = eval(line);
-			
-			if (result !== undefined)
-				this.line("> ${1}".format(result));
-		}
-		catch (e) {
-			this.line("Error: ${message}".format(e));
-		}
-	})
+	this.global = global;
 	
 	this.messages = new Messages();
 	this.messagesReactor = new MessagesReactor();
 	
-	_consoleCommands.register();
-	delete _consoleCommands.register;
+	this.console = new BotConsole(this);
+	new EssentialConsoleCommands(this);
+	
+	this.irc = new Irc(this);
+	new IrcMessages(this, this.irc);
 	
 	this.console.show();
+	this.irc.connect(new Irc.Server("irc.mv.ru", 6669));
+}
+
+SkypeBot.prototype.toString = function() {
+	return "[object SkypeBot]";
 }

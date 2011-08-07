@@ -3,17 +3,20 @@
 	
 	<script language="jscript" src="array.js" />
 	<script language="jscript" src="text.js" />
+	<script language="jscript" src="utils.js" />
 	<script language="jscript" src="console.js" />
 	<script language="jscript" src="messages.js" />
 	<script language="jscript" src="errors.js" />
 	<script language="jscript" src="bot.js" />
 	<script language="jscript" src="console.commands.js" />
+	<script language="jscript" src="irc.js" />
+	<script language="jscript" src="irc.messages.js" />
 	
 	<script language="jscript">
-		var bot = new SkypeBot();
+		var bot = new SkypeBot(this);
 		
 		var dbg = {
-			echo: function(text) {
+			p: function(text) {
 				WSH.Echo(text);
 			}
 		}

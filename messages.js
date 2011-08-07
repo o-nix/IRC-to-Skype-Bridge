@@ -16,7 +16,7 @@ function Messages() {
 			this.data = arguments;
 			
 			this.toString = function() {
-				return "[message ${1}]".format(name);
+				return "[Message ${1}]".format(name);
 			}
 		}
 		
@@ -32,17 +32,25 @@ function Messages() {
 				_subscribers.splice(idx, 1);
 		}
 		
+		// If the callback function returns "false" then we do not send this message to others.
 		constructor.send = function() {
+			var args = arguments;
+			
 			_subscribers.each(function(callback) {
-				if (callback.apply(constructor, arguments) === false)
+				if (callback.apply(constructor, args) === false)
 					return false;
 			})
 		}
 		
+		// Second parameter of registration function will be considered as default message handler.
 		if (defaultSubscriber != null)
 			constructor.subscribe(defaultSubscriber);
 		
 		this[name] = constructor;
+	}
+	
+	this.isRegistered = function(name) {
+		return typeof(this[name]) == "function";
 	}	
 	
 	MessagesReactor = function() {
@@ -57,11 +65,23 @@ function Messages() {
 			var msg = this.peekNext();
 			msg.constructor.send.apply(msg.constructor, msg.data);
 		}
+		
+		this.toString = function() {
+			return "[object MessagesReactor]";
+		}
 	}
 
 	//
 	
+	this.register("QUIT", function() {
+		WSH.Quit();
+	})
+
 	this.register("IDLE", function() {
 		WSH.Sleep(1);
 	})
+}
+
+Messages.prototype.toString = function() {
+	return "[object Messages]";
 }
