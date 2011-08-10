@@ -26,6 +26,10 @@ function Irc(bot) {
 		_irc.Connect(server.host, server.port);
 	}
 	
+	this.disconnect = function() {
+		_irc.Disconnect();
+	}
+	
 	this.send = function(msg) {
 		_irc.SendLine(msg);
 		

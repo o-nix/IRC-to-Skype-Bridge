@@ -7,8 +7,8 @@ function EssentialConsoleCommands(bot) {
 		var args = text.split(" ");
 		var key  = args.shift();
 		
-		if (this[key]) {
-			this[key].apply(this, args);
+		if (_ctx[key]) {
+			_ctx[key].apply(_ctx, args);
 		}
 		else {
 			try {
@@ -25,6 +25,7 @@ function EssentialConsoleCommands(bot) {
 	
 	this.quit = function() {
 		bot.irc.send(new IrcMessage.QUIT("bye!"));
+		bot.irc.disconnect();
 		(new msgs.QUIT()).defer();
 	}
 }
