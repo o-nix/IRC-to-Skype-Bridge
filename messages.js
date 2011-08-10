@@ -47,11 +47,22 @@ function Messages() {
 			constructor.subscribe(defaultSubscriber);
 		
 		this[name] = constructor;
+		
+		return constructor;
 	}
 	
 	this.isRegistered = function(name) {
 		return typeof(this[name]) == "function";
-	}	
+	}
+	
+	this.get = function(name, force) {
+		if (this.isRegistered(name))
+			return this[name];
+		else if (force)
+			return this.register(name);
+		else
+			return null;
+	}
 	
 	MessagesReactor = function() {
 		this.peekNext = function() {

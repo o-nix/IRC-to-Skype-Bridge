@@ -11,15 +11,10 @@
 	<script language="jscript" src="console.commands.js" />
 	<script language="jscript" src="irc.js" />
 	<script language="jscript" src="irc.messages.js" />
+	<script language="jscript" src="irc.default.binds.js" />
 	
 	<script language="jscript">
 		var bot = new SkypeBot(this);
-		
-		var dbg = {
-			p: function(text) {
-				WSH.Echo(text);
-			}
-		}
 		
 		while (true)
 			bot.messagesReactor.processNext();

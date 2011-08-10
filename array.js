@@ -46,3 +46,15 @@ Array.prototype.indexOf = function(given, strict) {
 		
 	return result;
 }
+
+Array.prototype.asObject = function(labels) {
+	var result = {};
+	var _ctx = this;
+	
+	labels.each(function(label, idx) {
+		if (label != null)
+			result[label] = _ctx[idx];
+	})
+		
+	return result;
+}

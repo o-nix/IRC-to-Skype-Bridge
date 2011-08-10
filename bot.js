@@ -11,9 +11,10 @@ function SkypeBot(global) {
 	
 	this.irc = new Irc(this);
 	new IrcMessages(this, this.irc);
+	new IrcDefaultBinds(this);
 	
 	this.console.show();
-	this.irc.connect(new Irc.Server("irc.mv.ru", 6669));
+	this.irc.connect(new Irc.Server("irc.anarxi.st", 6669));
 }
 
 SkypeBot.prototype.toString = function() {

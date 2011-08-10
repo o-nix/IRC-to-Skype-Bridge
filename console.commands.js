@@ -24,6 +24,7 @@ function EssentialConsoleCommands(bot) {
 	})
 	
 	this.quit = function() {
+		bot.irc.send(new IrcMessage.QUIT("bye!"));
 		(new msgs.QUIT()).defer();
 	}
 }
