@@ -1,0 +1,22 @@
+<job>
+	<?job error="true" debug="true"?>
+	
+	<script language="jscript" src="core/internals/array.js" />
+	<script language="jscript" src="core/internals/string.js" />
+	<script language="jscript" src="core/errors.js" />
+	<script language="jscript" src="core/utils.js" />
+	<script language="jscript" src="core/console/main.js" />
+	<script language="jscript" src="core/console/commands.js" />
+	<script language="jscript" src="core/messages.js" />
+	<script language="jscript" src="core/bot.js" />
+	<script language="jscript" src="irc/main.js" />
+	<script language="jscript" src="irc/messages.js" />
+	<script language="jscript" src="irc/defaults.js" />
+	
+	<script language="jscript">
+		var bot = new SkypeBot(this);
+		
+		while (true)
+			bot.messagesReactor.processNext();
+	</script>
+</job>
