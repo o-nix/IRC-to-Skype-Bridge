@@ -1,5 +1,7 @@
 function SkypeBot(global) {
-	var bot = this;
+	this.toString = function() {
+		return "[object SkypeBot]";
+	}
 	
 	this.global = global;
 	
@@ -13,10 +15,9 @@ function SkypeBot(global) {
 	new IrcMessages(this, this.irc);
 	new IrcDefaultBinds(this);
 	
+	this.skype = new Skype(this);
+	
 	this.console.show();
 	this.irc.connect(new Irc.Server("irc.anarxi.st", 6669));
 }
 
-SkypeBot.prototype.toString = function() {
-	return "[object SkypeBot]";
-}

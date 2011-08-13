@@ -53,3 +53,9 @@ IrcMessage.QUIT = function(reason) {
 		return "QUIT :${1}".format(reason);
 	}
 }
+
+IrcMessage.CHANNEL = function(channel, text) {
+	this.toString = function() {
+		return "PRIVMSG ${1} :${2}".format(channel, text);
+	}
+}
