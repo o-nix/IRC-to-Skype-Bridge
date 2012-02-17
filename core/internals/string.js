@@ -7,7 +7,6 @@ String.prototype.format = function() {
 				return args[i][element];
 		}
 
-
 		if (typeof(args[element - 1]) == "undefined")
 			return base;
 		else {

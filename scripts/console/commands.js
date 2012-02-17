@@ -30,4 +30,14 @@ function EssentialConsoleCommands(bot) {
 		bot.irc.disconnect();
 		(new msgs.QUIT()).defer();
 	}
+	
+	this.dump = function() {
+		bot.irc.send([].slice(arguments).join(" "));
+	}
+	
+	this.test = function() {
+		bot.console.line("Passed.");
+	}
 }
+
+new EssentialConsoleCommands(bot);

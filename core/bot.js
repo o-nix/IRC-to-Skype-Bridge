@@ -15,7 +15,6 @@ function SkypeBot(global) {
 	this.messagesReactor = new MessagesReactor();
 	
 	this.console = new BotConsole(this);
-	new EssentialConsoleCommands(this);
 	
 	this.irc = new Irc(this);
 	this.ircServers = [];
@@ -49,8 +48,8 @@ function SkypeBot(global) {
 	}
 		
 	
-	//this.skype = new Skype(this);
-		
+	this.skype = new Skype(this);
+
 	this.console.show();
 }
 

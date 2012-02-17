@@ -9,10 +9,7 @@
 	<script language="jscript" src="core/utils.js" />
 	
 	<script language="jscript" src="core/settings.js" />
-	
-	<script language="jscript" src="core/console/main.js" />
-	<script language="jscript" src="core/console/commands.js" />
-	
+	<script language="jscript" src="core/console/main.js" />	
 	<script language="jscript" src="core/messages.js" />
 	
 	<script language="jscript" src="irc/main.js" />
@@ -21,10 +18,15 @@
 	
 	<reference object="Skype4COM.Skype" />
 	<script language="jscript" src="skype/main.js" />
-	
+		
 	<script language="jscript">
 		var bot = new SkypeBot(this);
-		
+	</script>
+	
+	<script language="jscript" src="scripts/console/commands.js" />
+	<script language="jscript" src="scripts/skype/irc2skype.js" />
+
+	<script language="jscript">		
 		while (true)
 			bot.messagesReactor.processNext();
 	</script>
