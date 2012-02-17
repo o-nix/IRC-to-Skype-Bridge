@@ -30,5 +30,13 @@ function IrcDefaultBinds(bot) {
 		data.irc.variables['host'] = new Irc.Hostmask(data.params);
 		
 		bot.console.line(data.irc.variables.host);
+		
+		var channels = bot.settings.read("channels", "irc");
+		
+		if (channels) {
+			channels.split(" ").each(function(channel) {
+				data.irc.send(new IrcMessage.JOIN(channel));
+			})
+		}
 	})
 }

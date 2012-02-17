@@ -8,6 +8,8 @@
 	<script language="jscript" src="core/errors.js" />
 	<script language="jscript" src="core/utils.js" />
 	
+	<script language="jscript" src="core/settings.js" />
+	
 	<script language="jscript" src="core/console/main.js" />
 	<script language="jscript" src="core/console/commands.js" />
 	

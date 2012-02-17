@@ -59,3 +59,9 @@ IrcMessage.CHANNEL = function(channel, text) {
 		return "PRIVMSG ${1} :${2}".format(channel, text);
 	}
 }
+
+IrcMessage.JOIN = function(channel, pass) {
+	this.toString = function() {
+		return "JOIN ${1}".format(channel, pass);
+	}
+}

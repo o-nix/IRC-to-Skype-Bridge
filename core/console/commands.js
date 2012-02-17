@@ -3,6 +3,8 @@ function EssentialConsoleCommands(bot) {
 	var msgs = bot.messages;
 	
 	msgs.CONSOLE_TEXT.subscribe(function(text) {
+		text = text.replace(/^\./, "");
+		
 		var cons = bot.console;
 		var args = text.split(" ");
 		var key  = args.shift();

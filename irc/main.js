@@ -44,9 +44,13 @@ function Irc(bot) {
 	// Fucking magic happens here.
 
 	bot.global["${1}OnConnect".format(prefix)] =  function(status) {
-		(new msgs.IRC_CONNECTED(status, _ctx)).defer();
-		
-		_ctx.state = Irc.State.Connected;
+		if (status != "Can't connect.") {
+			(new msgs.IRC_CONNECTED(status, _ctx)).defer();
+			
+			_ctx.state = Irc.State.Connected;
+		}
+		else
+			(new msgs.IRC_DISCONNECTED(_ctx)).defer();			
 	}
 	
 	bot.global["${1}OnClose".format(prefix)] = function() {

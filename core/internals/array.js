@@ -58,3 +58,11 @@ Array.prototype.asObject = function(labels) {
 		
 	return result;
 }
+
+Array.prototype.next = function() {
+	var current = this.shift();
+	
+	this.push(current);
+	
+	return current;
+}
